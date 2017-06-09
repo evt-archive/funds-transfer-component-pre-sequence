@@ -10,6 +10,7 @@ module FundsTransferComponent
         funds_transfer.amount = self.amount
 
         funds_transfer.initiated_time = Time::Effective::Raw.example
+        funds_transfer.withdrawn_time = Time::Effective::Raw.example
 
         funds_transfer
       end
@@ -19,7 +20,7 @@ module FundsTransferComponent
       end
 
       def self.id_increment
-        11
+        1111
       end
 
       def self.amount
@@ -34,7 +35,9 @@ module FundsTransferComponent
 
       module Initiated
         def self.example
-          FundsTransfer.example
+          funds_transfer = FundsTransfer.example
+          funds_transfer.withdrawn_time = nil
+          funds_transfer
         end
       end
     end

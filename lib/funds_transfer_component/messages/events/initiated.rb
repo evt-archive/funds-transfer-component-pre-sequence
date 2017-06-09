@@ -7,6 +7,7 @@ module FundsTransferComponent
         attribute :funds_transfer_id, String
         attribute :withdrawal_account_id, String
         attribute :deposit_account_id, String
+        attribute :withdrawal_id, String
         attribute :amount, Numeric
         attribute :time, String
         attribute :processed_time, String

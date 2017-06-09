@@ -16,7 +16,20 @@ module FundsTransferComponent
       category :funds_transfer
 
       handle Initiated do |initiated|
-        # TODO Send Withdraw command to the Account component using account client
+        funds_transfer_id = initiated.funds_transfer_id
+        account_id = initiated.withdrawal_account_id
+        withdrawal_id = initiated.withdrawal_id
+        amount = initiated.amount
+
+        reply_stream_name = command_stream_name(funds_transfer_id)
+
+        withdraw.(
+          withdrawal_id: withdrawal_id,
+          account_id: account_id,
+          amount: amount,
+          reply_stream_name: reply_stream_name,
+          previous_message: initiated
+        )
       end
     end
   end
